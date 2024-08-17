@@ -1,0 +1,72 @@
+{
+    "name": "stefanofabi/drops-lims",
+    "type": "project",
+    "description": "Drops LIMS an open source web application for the management of clinical laboratories",
+    "keywords": [
+        "drops",
+        "lims",
+		"laboratory",
+		"health"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "ext-gd": "*",
+        "ext-mbstring": "*",
+        "ext-pdo_pgsql": "*",
+        "ext-zip": "^1.21",
+        "barryvdh/laravel-dompdf": "^2.0.0",
+        "creativeorange/gravatar": "^1.0",
+        "laravel/framework": "^10.0",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^4.2.1",
+        "mchev/banhammer": "^1.2",
+        "milon/barcode": "^10.0",
+        "rap2hpoutre/laravel-log-viewer": "^2.3.0",
+        "spatie/laravel-activitylog": "^4.7.3",
+        "spatie/laravel-permission": "^5.10.1"
+    },
+    "require-dev": {
+        "spatie/laravel-ignition": "^2.0",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}
